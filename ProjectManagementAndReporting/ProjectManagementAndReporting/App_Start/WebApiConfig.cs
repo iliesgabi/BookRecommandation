@@ -48,7 +48,7 @@ namespace ProjectManagementAndReporting
                 .RuleFor(b => b.Year, f => f.Random.Number(1900, 2020))
                 .RuleFor(b => b.PublishingHouse, f => f.Lorem.Sentence(1))
                 .RuleFor(b => b.ShortDescription, f => f.Lorem.Sentence(10))
-                .RuleFor(b => b.Rating, f => f.Random.Float())
+                .RuleFor(b => b.Rating, f => f.Random.Float(0, 5))
                 .RuleFor(b => b.Comments, f => comments.Generate(5));
 
 

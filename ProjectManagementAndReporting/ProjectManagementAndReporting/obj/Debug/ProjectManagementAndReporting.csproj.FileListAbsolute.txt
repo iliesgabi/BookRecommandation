@@ -1,4 +1,3 @@
-D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\obj\Debug\ProjectManagementAndReporting.csprojAssemblyReference.cache
 D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\obj\Debug\ProjectManagementAndReporting.csproj.CoreCompileInputs.cache
 D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\bin\ApplicationInsights.config
 D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\bin\ProjectManagementAndReporting.dll.config
@@ -51,3 +50,4 @@ D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\bin\Mi
 D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\obj\Debug\ProjectManagementAndReporting.csproj.CopyComplete
 D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\obj\Debug\ProjectManagementAndReporting.dll
 D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\obj\Debug\ProjectManagementAndReporting.pdb
+D:\proiect is\ProjectManagementAndReporting\ProjectManagementAndReporting\obj\Debug\ProjectManagementAndReporting.csprojAssemblyReference.cache

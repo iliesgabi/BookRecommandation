@@ -196,6 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Linkers\BookLinker.cs" />
+    <Compile Include="Linkers\UserLinker.cs" />
+    <Compile Include="Linkers\CommentLinker.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\User.cs" />
