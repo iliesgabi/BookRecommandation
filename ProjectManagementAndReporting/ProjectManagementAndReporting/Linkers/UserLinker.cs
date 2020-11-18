@@ -86,5 +86,17 @@ namespace ProjectManagementAndReporting.Linkers
             dataBase.Data.Users.Remove(user);
             dataBase.Save();
         }
+
+        public void DeleteBookFromActiveBooks(User user, int idBook)
+        {
+            user.ActiveBooks.Remove(user.ActiveBooks.Find(book => book.Id == idBook));
+            dataBase.Save();
+        }
+
+        public void DeleteBookFromWishList(User user, int idBook)
+        {
+            user.WishList.Remove(user.WishList.Find(book => book.Id == idBook));
+            dataBase.Save();
+        }
     }
 }

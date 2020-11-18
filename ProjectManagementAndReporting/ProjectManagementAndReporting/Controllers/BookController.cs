@@ -61,17 +61,6 @@ namespace ProjectManagementAndReporting.Controllers
             return bookLinker.GetBooksByPublishingHouse(publishingHouse);
         }
 
-        /*
-        [HttpGet]
-        [Route("api/book/search/rating/{rating}")]
-        //Get api/book/search/rating/int
-        public List<Book> GetBooksByRating(float rating)
-        {
-            return bookLinker.GetBooksByRating(rating);
-        } 
-        */
-
-
         [HttpPost]
         [Route("api/book/add/{id}/{title}/{author}/{year}/{publishingHouse}")]
         public HttpResponseMessage AddBook(int id, string title, string author, int year, string publishingHouse)
@@ -151,7 +140,6 @@ namespace ProjectManagementAndReporting.Controllers
             }
         }
 
-
         [HttpPut]
         [Route("api/book/addComment/{idBook}/{idComment}")]
         public HttpResponseMessage AddCommentToBook(int idBook, int idComment)
@@ -161,6 +149,22 @@ namespace ProjectManagementAndReporting.Controllers
                 Book book = bookLinker.GetBook(idBook);
                 bookLinker.AddCommentToBook(book, idComment);
                 return Request.CreateResponse(HttpStatusCode.OK, "Comment added");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Incorrect input");
+            }
+        }
+
+        [HttpPut]
+        [Route("api/book/addDescription/{idBook}/{description}")]
+        public HttpResponseMessage AddShortDescriptionToBook(int idBook, string description)
+        {
+            try
+            {
+                Book book = bookLinker.GetBook(idBook);
+                bookLinker.AddDescriptionToBook(book, description);
+                return Request.CreateResponse(HttpStatusCode.OK, "Description added");
             }
             catch
             {

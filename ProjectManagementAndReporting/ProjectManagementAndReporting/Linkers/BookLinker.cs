@@ -99,7 +99,13 @@ namespace ProjectManagementAndReporting.Linkers
             book.Comments.Add(comment);
             dataBase.Save();
         }
-       
+
+        public void AddDescriptionToBook(Book book, string description)
+        {
+            book.ShortDescription = description;
+            dataBase.Save();
+        }
+
         public void DeleteBook(Book book)
         {
             dataBase.Data.Books.Remove(book);

@@ -147,5 +147,38 @@ namespace ProjectManagementAndReporting.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Incorrect input");
             }
         }
+
+        [HttpDelete]
+        [Route("api/user/deleteActiveBook/{idUser}/{idBook}")]
+        public HttpResponseMessage DeleteBookFromActiveBooks(int idUser, int idBook)
+        {
+            try
+            {
+                User user = userLinker.GetUser(idUser);
+                userLinker.DeleteBookFromActiveBooks(user, idBook);
+                return Request.CreateResponse(HttpStatusCode.OK, "Active book deleted");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Incorrect input");
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/user/deleteWishListBook/{idUser}/{idBook}")]
+        public HttpResponseMessage DeleteBookFromWishList(int idUser, int idBook)
+        {
+            try
+            {
+                User user = userLinker.GetUser(idUser);
+                Book book = bookLinker.GetBook(idBook);
+                userLinker.DeleteBookFromWishList(user, idBook);
+                return Request.CreateResponse(HttpStatusCode.OK, "Book from wish list deleted");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Incorrect input");
+            }
+        }
     }
 }
