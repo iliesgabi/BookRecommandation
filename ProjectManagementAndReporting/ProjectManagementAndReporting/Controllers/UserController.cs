@@ -66,6 +66,20 @@ namespace ProjectManagementAndReporting.Controllers
             return userLinker.GetAdmins();
         }
 
+        [HttpGet]
+        [Route("api/user/{username}")]
+        public int GetId(string username)
+        {
+            return userLinker.GetId(username);
+        }
+
+        [HttpGet]
+        [Route("api/user/verify/{username}/{password}")]
+        public int VerifyUser(string username, string password)
+        {
+           return userLinker.VerifyUser(username, password);
+        }
+
         [HttpPost]
         [Route("api/user/add/{id}/{isAdmin}/{username}/{password}")]
         public HttpResponseMessage AddUser(int id, int isAdmin, string username, string password)
@@ -125,6 +139,22 @@ namespace ProjectManagementAndReporting.Controllers
                 Book book = bookLinker.GetBook(idBook);
                 userLinker.AddBookToWishList(user, book);
                 return Request.CreateResponse(HttpStatusCode.OK, "Book to wish list added");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Incorrect input");
+            }
+        }
+
+        [HttpPut]
+        [Route("api/user/rating/{idUser}/{idBook}/{rating}")]
+        public HttpResponseMessage AddRatingToBook(int idUser, int idBook, int rating)
+        {
+            try
+            {
+                Book book = bookLinker.GetBook(idBook);
+                bookLinker.AddRatingToBook(idUser, book, rating);
+                return Request.CreateResponse(HttpStatusCode.OK, "Rating added to book");
             }
             catch
             {

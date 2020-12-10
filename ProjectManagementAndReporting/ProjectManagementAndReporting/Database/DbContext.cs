@@ -20,7 +20,7 @@ namespace ProjectManagementAndReporting.Database
             GetData();
         }
 
-        private void GetData()
+        public void GetData()
         {
            var allBooks = File.ReadAllText("C:\\allBooks.txt");
            var allUsers = File.ReadAllText("C:\\allUsers.txt");

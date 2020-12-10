@@ -7,6 +7,14 @@ namespace ProjectManagementAndReporting.Models
 {
     public class User
     {
+        public User()
+        {
+            ReadBooks = new List<Book>();
+            ActiveBooks = new List<Book>();
+            WishList = new List<Book>();
+            RecommendedBooks = new List<Book>();
+        }
+
         public int Id { get; set; }
 
         public int IsAdmin { get; set; }
@@ -20,5 +28,7 @@ namespace ProjectManagementAndReporting.Models
         public List<Book> ActiveBooks { get; set; }
 
         public List<Book> WishList { get; set; }
+
+        public List<Book> RecommendedBooks { get; set; }
     }
 }

@@ -61,13 +61,28 @@ namespace ProjectManagementAndReporting.Controllers
             return bookLinker.GetBooksByPublishingHouse(publishingHouse);
         }
 
+        [HttpGet]
+        [Route("api/book/search/ratings/{idBook}")]
+        //Get api/book/search/title/string
+        public List<int> GetBooksRatings(int idBook)
+        {
+            return bookLinker.GetBooksRatings(idBook).Keys.ToList();
+        }
+
+        [HttpGet]
+        [Route("api/book/rec/{idUser}")]
+        public List<int> GetRecommandation(int idUser)
+        {
+            return bookLinker.GetRecommandationForUser(idUser);
+        }
+
         [HttpPost]
-        [Route("api/book/add/{id}/{title}/{author}/{year}/{publishingHouse}")]
-        public HttpResponseMessage AddBook(int id, string title, string author, int year, string publishingHouse)
+        [Route("api/book/add/{id}/{title}/{author}/{year}/{publishingHouse}/{description}")]
+        public HttpResponseMessage AddBook(int id, string title, string author, int year, string publishingHouse, string description)
         {
             try
             {
-                bookLinker.AddBook(id, title, author, year, publishingHouse);
+                bookLinker.AddBook(id, title, author, year, publishingHouse, description);
                 return Request.CreateResponse(HttpStatusCode.OK, "Book created");
             }
             catch

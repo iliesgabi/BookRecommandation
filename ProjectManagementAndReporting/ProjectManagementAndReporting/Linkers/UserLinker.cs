@@ -51,6 +51,23 @@ namespace ProjectManagementAndReporting.Linkers
         {
             return dataBase.Data.Users.FindAll(user => user.IsAdmin == 1);
         }
+
+        public int VerifyUser(string username, string password)
+        {
+            List<User> usernames = dataBase.Data.Users.FindAll(user => user.Username.Equals(username));
+            foreach (User user in usernames)
+            {
+                if (user.Password.Equals(password))
+                    return user.IsAdmin;
+            }
+            return -1;
+        }
+
+        public int GetId(string usermane)
+        {
+            return dataBase.Data.Users.Find(user => user.Username.Equals(usermane)).Id;
+        }
+
         public void AddUser(int id, int isAdmin, string username, string password)
         {
             User user = new User();
