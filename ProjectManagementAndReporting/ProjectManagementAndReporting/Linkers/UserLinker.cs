@@ -68,10 +68,11 @@ namespace ProjectManagementAndReporting.Linkers
             return dataBase.Data.Users.Find(user => user.Username.Equals(usermane)).Id;
         }
 
-        public void AddUser(int id, int isAdmin, string username, string password)
+        public void AddUser(int isAdmin, string username, string password)
         {
             User user = new User();
-            user.Id = id;
+            user.Id = dataBase.Data.IdUser;
+            dataBase.Data.IdUser = dataBase.Data.Users.Count;
             user.IsAdmin = isAdmin;
             user.Username = username;
             user.Password = password;

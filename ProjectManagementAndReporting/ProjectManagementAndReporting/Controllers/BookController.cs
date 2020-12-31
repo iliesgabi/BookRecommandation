@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using ProjectManagementAndReporting.Database;
 using ProjectManagementAndReporting.Linkers;
 using ProjectManagementAndReporting.Models;
@@ -76,13 +77,24 @@ namespace ProjectManagementAndReporting.Controllers
             return bookLinker.GetRecommandationForUser(idUser);
         }
 
+        [HttpGet]
+        [Route("api/book/rec/names/{idUser}")]
+        public List<string> GetRecommandationNames(int idUser)
+        {
+            List<int> iduri = bookLinker.GetRecommandationForUser(idUser);
+            List<string> nume = new List<string>();
+            for (int i = 0; i < iduri.Count;  i++)
+                nume.Add(bookLinker.GetBook(iduri.ElementAt(i)).Title);
+            return nume;
+        }
+
         [HttpPost]
-        [Route("api/book/add/{id}/{title}/{author}/{year}/{publishingHouse}/{description}")]
-        public HttpResponseMessage AddBook(int id, string title, string author, int year, string publishingHouse, string description)
+        [Route("api/book/add/{title}/{author}/{year}/{publishingHouse}/{description}")]
+        public HttpResponseMessage AddBook(string title, string author, int year, string publishingHouse, string description)
         {
             try
             {
-                bookLinker.AddBook(id, title, author, year, publishingHouse, description);
+                bookLinker.AddBook(title, author, year, publishingHouse, description);
                 return Request.CreateResponse(HttpStatusCode.OK, "Book created");
             }
             catch
@@ -187,6 +199,7 @@ namespace ProjectManagementAndReporting.Controllers
             }
         }
 
+        [DisableCors]
         [HttpDelete]
         [Route("api/book/delete/{idBook}")]
         public HttpResponseMessage DeleteBook(int idBook)

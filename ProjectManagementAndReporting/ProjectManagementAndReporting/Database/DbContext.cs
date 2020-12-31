@@ -25,12 +25,18 @@ namespace ProjectManagementAndReporting.Database
            var allBooks = File.ReadAllText("C:\\allBooks.txt");
            var allUsers = File.ReadAllText("C:\\allUsers.txt");
            var allComments = File.ReadAllText("C:\\allComments.txt");
+           var idComment = File.ReadAllText("C:\\idComment.txt");
+           var idUser = File.ReadAllText("C:\\idUser.txt");
+           var idBook = File.ReadAllText("C:\\idBook.txt");
 
             _data = new Data
            {
                Books = JsonConvert.DeserializeObject<List<Book>>(allBooks),
                Comments = JsonConvert.DeserializeObject<List<Comment>>(allComments),
-               Users = JsonConvert.DeserializeObject<List<User>>(allUsers)
+               Users = JsonConvert.DeserializeObject<List<User>>(allUsers),
+               IdComment = JsonConvert.DeserializeObject<int>(idComment),
+               IdBook = JsonConvert.DeserializeObject<int>(idBook),
+               IdUser = JsonConvert.DeserializeObject<int>(idUser)
             };
 
         }
@@ -40,6 +46,9 @@ namespace ProjectManagementAndReporting.Database
             File.WriteAllText("C:\\allBooks.txt", JsonConvert.SerializeObject(Data.Books));
             File.WriteAllText("C:\\allComments.txt", JsonConvert.SerializeObject(Data.Comments));
             File.WriteAllText("C:\\allUsers.txt", JsonConvert.SerializeObject(Data.Users));
+            File.WriteAllText("C:\\idComment.txt", JsonConvert.SerializeObject(Data.IdComment));
+            File.WriteAllText("C:\\idBook.txt", JsonConvert.SerializeObject(Data.IdBook));
+            File.WriteAllText("C:\\idUser.txt", JsonConvert.SerializeObject(Data.IdUser));
         }
     }
 }

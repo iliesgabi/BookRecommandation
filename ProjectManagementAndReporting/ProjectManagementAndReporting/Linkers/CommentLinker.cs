@@ -43,10 +43,11 @@ namespace ProjectManagementAndReporting.Linkers
             return dataBase.Data.Comments.FindAll(comment => comment.Date.Date.Equals(date.Date));
         }
     
-        public void AddComment(int idComment, string author, string text)
+        public void AddComment(string author, string text)
         {
             Comment comment = new Comment();
-            comment.Id = idComment;
+            comment.Id = dataBase.Data.IdComment;
+            dataBase.Data.IdComment = dataBase.Data.Comments.Count;
             comment.Author = author;
             comment.Text = text;
             comment.Date = DateTime.Now;

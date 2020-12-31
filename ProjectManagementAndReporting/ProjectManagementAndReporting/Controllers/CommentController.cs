@@ -46,13 +46,14 @@ namespace ProjectManagementAndReporting.Controllers
             return commentLinker.GetCommentsByDate(dateTime);
         }
 
+
         [HttpPost]
-        [Route("api/comment/add/{id}/{author}/{text}")]
-        public HttpResponseMessage AddComment(int id, string author, string text)
+        [Route("api/comment/add/{author}/{text}")]
+        public HttpResponseMessage AddComment(string author, string text)
         {
             try
             {
-                commentLinker.AddComment(id, author, text);
+                commentLinker.AddComment(author, text);
                 return Request.CreateResponse(HttpStatusCode.OK, "Comment created");
             }
             catch

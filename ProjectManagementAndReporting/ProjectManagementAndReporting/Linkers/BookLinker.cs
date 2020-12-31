@@ -61,10 +61,11 @@ namespace ProjectManagementAndReporting.Linkers
             return dataBase.Data.Books.FindAll(book => (book.Rating == rating));
         }
 
-        public void AddBook(int id, string title, string author, int year, string publishingHouse, string description)
+        public void AddBook(string title, string author, int year, string publishingHouse, string description)
         {
             Book book = new Book();
-            book.Id = id;
+            book.Id = dataBase.Data.IdBook;
+            dataBase.Data.IdBook = dataBase.Data.Books.Count;
             book.Title = title;
             book.Author = author;
             book.Year = year;
@@ -335,6 +336,9 @@ namespace ProjectManagementAndReporting.Linkers
                 auxPos[pos] = 1;
             }
 
+            UserLinker userLinker = UserLinker.Instance();
+            User user = userLinker.GetUser(idUser);
+            
             return recommandation.ToList();
         }
     }

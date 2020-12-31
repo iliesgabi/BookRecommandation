@@ -81,12 +81,12 @@ namespace ProjectManagementAndReporting.Controllers
         }
 
         [HttpPost]
-        [Route("api/user/add/{id}/{isAdmin}/{username}/{password}")]
-        public HttpResponseMessage AddUser(int id, int isAdmin, string username, string password)
+        [Route("api/user/add/{isAdmin}/{username}/{password}")]
+        public HttpResponseMessage AddUser(int isAdmin, string username, string password)
         {
             try
             {
-                userLinker.AddUser(id, isAdmin, username, password);
+                userLinker.AddUser(isAdmin, username, password);
                 return Request.CreateResponse(HttpStatusCode.OK, "User created");
             }
             catch
